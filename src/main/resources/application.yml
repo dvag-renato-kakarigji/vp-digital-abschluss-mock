@@ -1,0 +1,46 @@
+# Spring Application Name
+spring:
+  application:
+    name: abschlussmock
+  jmx:
+    enabled: true
+
+# Management Endpunkte aktivieren und unwichtigte deaktivieren
+# Sensitive Endpunkte müssen durch den SSOP geschützt werden.
+management:
+  endpoint:
+    auditevents:
+      enabled: false
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,env,threaddump
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+# Erweiterung des Info-Endpunkt um die Versionsnummer aus dem Deployment
+info:
+  version: ${DEPLOY_VERSION}
+
+# Zeit, die gewartet werden soll, wenn ein SIGTERM In der Anwendung ankommt. Nach
+# der angegeben Zeit wird der Spring Context geschlossen und die App angehalten.
+estaGracefulShutdownWaitSeconds: 30
+
+#zob-host: http://zob-proxy
+#http-proxy-port: 3128
+secure: true
+
+# Logging auf Level DEBUG für alle Klassen der DVAG
+logging:
+  level:
+    com.dvag: DEBUG
+
+server:
+  tomcat:
+    mbeanregistry:
+      enabled: true

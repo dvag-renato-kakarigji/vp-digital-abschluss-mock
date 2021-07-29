@@ -1,0 +1,13 @@
+name: springbootongithub
+profile: entwicklung
+package: beispiel
+namespace: entwicklung-beispiel
+ansprechpartner: "Florian_Koch"
+jiraprojekt: "CT"
+requests_memory: "500Mi"
+limits_memory: "500Mi"
+ingresses:
+- internal: springbootongithub.entwicklung.az.dvag
+letsencrypt:
+  internal: true
+  external: false

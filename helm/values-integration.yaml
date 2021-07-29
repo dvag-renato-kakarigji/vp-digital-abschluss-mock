@@ -1,0 +1,12 @@
+name: springbootongithub
+profile: integration
+package: timm
+namespace: integration-beispiel
+ansprechpartner: "Guido_Dolfen"
+jiraprojekt: "ITAQ"
+requests_memory: "500Mi"
+limits_memory: "500Mi"
+ingresses:
+- internal: springbootongithub.integration.az.dvag
+sealedSecrets:
+  SECRET_PASSWORD: secret1

@@ -1,0 +1,53 @@
+openapi: "3.0.2"
+info:
+  version: 0.0.1
+  title: VP-Digital-Abschluss API
+  description: API-Service zwischen dem Front- und Backend
+servers:
+  - url: https://vertragsabschluss.entwicklung.k8s.dvag.net/
+  - url: http://localhost:8080
+paths:
+  /rest/v1/{id}/Blue:
+    get:
+      summary: Liefert die übermittelten Blue
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      operationId: getBlue
+      tags:
+        - Blue
+      responses:
+        '200':
+          $ref: '#/components/responses/ProductInfoResponse'
+
+components:
+  responses:
+    ProductInfoResponse:
+      description: Erhaltene Blue
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Blue'
+
+  schemas:
+    Blue:
+      type: object
+      properties:
+        produktId:
+          type: string
+      additionalProperties:
+        type: object
+        properties:
+          label:
+            type: string
+          values:
+            type: object
+            properties: {}
+      example:
+        Vertragslaufzeit : 5 Jahre
+        Sparten: [Glas, Reise]
+        Beginn: 01.01.2022
+        Beitrag: 14,97€

@@ -1,0 +1,20 @@
+version: 2
+registries:
+  acr:
+    type: "docker-registry"
+    url: dvagcr.azurecr.io
+    username: gh-test
+    password: rjxnR+BcmiLdK9D=SR4GYj1+8klMuM=s
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"

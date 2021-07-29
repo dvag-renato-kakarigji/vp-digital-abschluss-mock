@@ -1,0 +1,12 @@
+name: springbootongithub
+profile: abnahme
+package: beispiel
+namespace: abnahme-beispiel
+ansprechpartner: "Guido_Dolfen"
+jiraprojekt: "ITAQ"
+requests_memory: "500Mi"
+limits_memory: "500Mi"
+ingresses:
+- internal: springbootongithub.abnahme.az.dvag
+sealedSecrets:
+  SECRET_PASSWORD: secret1

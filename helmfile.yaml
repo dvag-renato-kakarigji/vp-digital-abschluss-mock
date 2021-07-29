@@ -1,0 +1,24 @@
+repositories:
+  - name: dvagcr
+    url: dvagcr.azurecr.io/bp/chart-snapshots
+    oci: true
+
+releases:
+  - name: springboot-on-github
+    chart: dvagcr/spring-boot-2
+    version: 11.0.0
+    values:
+      - helm/values-{{ .Environment.Name }}.yaml
+
+environments:
+  entwicklung: {}
+  integration: {}
+  abnahme: {}
+  produktion: {}
+  vdl-mit: {}
+  vdl-preview1: {}
+  vdl-preview2: {}
+  vdl-releasebranch: {}
+  vdl-systemtest: {}
+  vdl-lieferung: {}
+  vdl-wartung: {}

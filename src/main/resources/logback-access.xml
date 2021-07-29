@@ -1,0 +1,43 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.AccessEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <version/>
+                <method/>
+                <protocol/>
+                <statusCode>
+                    <fieldName>code</fieldName>
+                </statusCode>
+                <remoteHost/>
+                <remoteUser>
+                    <fieldName>user</fieldName>
+                </remoteUser>
+                <contentLength>
+                    <fieldName>size</fieldName>
+                </contentLength>
+                <elapsedTime/>
+                <pattern>
+                    <pattern>
+                        {
+                        "agent": "%i{User-Agent}",
+                        "requestid": "%requestAttribute{requestid}",
+                        "host": "%v",
+                        "path": "%U"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.access.net.URLEvaluator">
+                <URL>/actuator/info</URL>
+                <URL>/actuator/health</URL>
+                <URL>/actuator/prometheus</URL>
+            </evaluator>
+            <OnMismatch>NEUTRAL</OnMismatch>
+            <OnMatch>DENY</OnMatch>
+        </filter>
+    </appender>
+    <appender-ref ref="CONSOLE"/>
+</configuration>

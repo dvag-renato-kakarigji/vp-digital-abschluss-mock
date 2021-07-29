@@ -1,0 +1,12 @@
+name: springbootongithub
+profile: produktion
+package: timm
+namespace: produktion-beispiel
+ansprechpartner: "Guido_Dolfen"
+jiraprojekt: "ITAQ"
+requests_memory: "500Mi"
+limits_memory: "500Mi"
+ingresses:
+- internal: springbootongithub.produktion.az.dvag
+sealedSecrets:
+  SECRET_PASSWORD: secret1
