@@ -18,4 +18,5 @@ class BlueController : BlueApi{
         return ResponseEntity.ok(blueDto)
     }
 
+
 }
